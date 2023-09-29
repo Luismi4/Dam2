@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.text.DecimalFormat;
 import java.util.*;
 public class Ejec {
-
+//comentario de prueba
 	static Scanner leer = new Scanner(System.in);
 	static double num1, num2, res;
 	static int opc = 0;
