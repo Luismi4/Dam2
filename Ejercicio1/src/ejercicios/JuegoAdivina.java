@@ -82,11 +82,11 @@ public class JuegoAdivina {
                         btnre.setVisible(true);
                         btnre.setEnabled(true);
                     } else if (num1 < ale) {
-                        txt.setText("El numero es mayor");
-                        txt.append("Te quedan: " + inte);
+                        txt.setText("El numero es mayor, ");
+                        txt.append("te quedan: " + inte);
                     } else {
-                        txt.setText("El numero es menor");
-                        txt.append("Te quedan: " + inte);
+                        txt.setText("El numero es menor, ");
+                        txt.append("te quedan: " + inte);
                     }
 
                     if (inte == 0) {
