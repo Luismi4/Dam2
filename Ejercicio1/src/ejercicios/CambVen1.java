@@ -38,8 +38,8 @@ public class CambVen1 {
 
     private static void abrirSegundaVentana() {
         JFrame segundaVentana = new JFrame("Segunda Ventana");
-        segundaVentana.setSize(300, 200);
-
+        segundaVentana.setBounds(100, 100, 150, 150);
+        segundaVentana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         segundaVentana.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
