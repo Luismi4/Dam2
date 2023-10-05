@@ -11,6 +11,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 
 public class Calculadora extends JFrame {
@@ -59,7 +61,25 @@ public class Calculadora extends JFrame {
 		txtPantalla.setBounds(10, 11, 208, 42);
 		contentPane.add(txtPantalla);
 		txtPantalla.setColumns(10);
-		
+		txtPantalla.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
 		
 		JButton btnLimpiar = new JButton("C");
 		btnLimpiar.setBackground(new Color(255, 255, 255));
@@ -317,6 +337,7 @@ public class Calculadora extends JFrame {
 		btnIgual.setFont(new Font("Arial", Font.BOLD, 18));
 		btnIgual.setBounds(120, 258, 45, 36);
 		contentPane.add(btnIgual);
+		
 		
 		
 	}
