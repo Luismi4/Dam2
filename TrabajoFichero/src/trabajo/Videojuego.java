@@ -99,8 +99,13 @@ public int[] getJugadores() {
 public void setJugadores(int[] jugadores) {
 	this.jugadores = jugadores;
 }
+public int getID() {
+	return ID;
+}
 
 //toString
+
+
 
 @Override
 public String toString() {
@@ -136,3 +141,7 @@ enum subgenero{
 	carreras, tenis, futbol, baloncesto, golf; //para deportes
 
 }
+
+
+
+

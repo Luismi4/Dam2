@@ -54,7 +54,7 @@ public class CrearXML {
 			    Element noviembre = document.createElement("noviembre");			    
 			    Element diciembre = document.createElement("diciembre");
 			    
-			    
+
 			    // Agrega elementos hijos al elemento ra�z
 			    videojuego.appendChild(id);
 			    videojuego.appendChild(titulo);
@@ -80,6 +80,8 @@ public class CrearXML {
 			    jugadores.appendChild(noviembre);
 			    jugadores.appendChild(diciembre);
 			    raiz.appendChild(videojuego);
+			    
+			    
 			    
 			    
 			    // Crea un objeto Transformer para escribir el archivo XML

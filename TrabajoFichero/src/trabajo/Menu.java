@@ -8,6 +8,7 @@ public class Menu {
 	public static ArrayList<Videojuego> videojuegos = new ArrayList<>();
     public static Scanner scanner = new Scanner(System.in);
 	
+ // Menú principal del programa
 	public static void Menu() {
 		
         while (true) {
@@ -25,20 +26,21 @@ public class Menu {
 
             switch (choice) {
                 case 1:
-                    CrearXML();
+                    CrearXML(); // Opción 1: Crear un archivo XML (no proporcionado en este fragmento)
                     break;
                 case 2:
+                	// Opción 2: Agregar un nuevo Videojuego al ArrayList
                 	Videojuego nuevoVideojuego = crearVideojuego(scanner);
                     videojuegos.add(nuevoVideojuego);
                     System.out.println("Videojuego añadido.");
                 case 3:
-                    actualizarVideojuego(scanner, videojuegos);
+                    actualizarVideojuego(scanner, videojuegos); // Opción 3: Actualizar un Videojuego existente
                     break;
                 case 4:
-                    eliminarVideojuego(scanner, videojuegos);
+                    eliminarVideojuego(scanner, videojuegos); // Opción 4: Eliminar un Videojuego
                     break;
                 case 5:
-                	LeerXML();
+                	LeerXML(); // Opción 5: Leer Videojuegos desde XML
                 case 6:
                     System.out.println("Saliendo del programa.");
                     scanner.close();
