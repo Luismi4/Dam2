@@ -30,6 +30,7 @@ public class CrearXML {
 			    
 			    // Crea elementos y atributos
 			    Element videojuego = document.createElement("videojuego");
+			    Element id = document.createElement("id");
 			    Element titulo = document.createElement("titulo");
 			    Element desarrollador = document.createElement("desarrollador");
 			    Element director = document.createElement("director");
@@ -55,6 +56,7 @@ public class CrearXML {
 			    
 			    
 			    // Agrega elementos hijos al elemento ra�z
+			    videojuego.appendChild(id);
 			    videojuego.appendChild(titulo);
 			    videojuego.appendChild(desarrollador);
 			    videojuego.appendChild(director);

@@ -1,7 +1,10 @@
 package trabajo;
 
+import java.util.Arrays;
+
 public class Videojuego {
 
+private final int ID;
 private String titulo;
 private String desarrollador;
 private String director;
@@ -10,6 +13,7 @@ private genero genero;
 private subgenero subgenero; //Es nodo nieto de genero
 private int pegi;
 private int anno;
+private static int contador;
 private String plataforma; //PS5, PS4, PS3, PS2, PS1, PC, xbox, xbox360, xboxOne, xboxOneX, Switch, 
 						//NES, SNES, N64, gameCube, wii, wiiU, megaDrive, saturn, dreamcast;
 						//El String debera quedar, por ejemplo: "PS5, xboxOneX, Switch, PC"
@@ -20,6 +24,7 @@ private int[] jugadores = new int[12]; //un mes por casilla del array
 public Videojuego(String titulo, String desarrollador, String director, String productor, trabajo.genero genero,
 		trabajo.subgenero subgenero, int pegi, int anno, String plataforma, int[] jugadores) {
 	super();
+	this.ID = contador++;
 	this.titulo = titulo;
 	this.desarrollador = desarrollador;
 	this.director = director;
@@ -93,6 +98,16 @@ public int[] getJugadores() {
 }
 public void setJugadores(int[] jugadores) {
 	this.jugadores = jugadores;
+}
+
+//toString
+
+@Override
+public String toString() {
+	return "Videojuego [ID=" + ID + ", titulo=" + titulo + ", desarrollador=" + desarrollador + ", director=" + director
+			+ ", productor=" + productor + ", genero=" + genero + ", subgenero=" + subgenero + ", pegi=" + pegi
+			+ ", anno=" + anno + ", contador=" + contador + ", plataforma=" + plataforma + ", jugadores="
+			+ Arrays.toString(jugadores) + "]";
 }
 
 }
