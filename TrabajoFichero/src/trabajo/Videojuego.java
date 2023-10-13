@@ -1,7 +1,5 @@
 package trabajo;
 
-import java.util.ArrayList;
-
 public class Videojuego {
 
 private final int ID;
@@ -139,13 +137,3 @@ enum subgenero{
 	carreras, tenis, futbol, baloncesto, golf; //para deportes
 
 }
-
-
-
-
-
-
-
-
-
-

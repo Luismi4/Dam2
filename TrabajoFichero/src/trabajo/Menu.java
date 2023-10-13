@@ -7,6 +7,7 @@ public class Menu {
 
 	public static ArrayList<Videojuego> videojuegos = new ArrayList<>();
     public static Scanner scanner = new Scanner(System.in);
+    public static ArrayList<Integer> numju = new ArrayList<Integer>();
 	
  // Menú principal del programa
 	public static void Menu() {
@@ -30,9 +31,6 @@ public class Menu {
                     break;
                 case 2:
                 	// Opción 2: Agregar un nuevo Videojuego al ArrayList
-                	Videojuego nuevoVideojuego = crearVideojuego(scanner);
-                    videojuegos.add(nuevoVideojuego);
-                    System.out.println("Videojuego añadido.");
                 case 3:
                     actualizarVideojuego(scanner, videojuegos); // Opción 3: Actualizar un Videojuego existente
                     break;
@@ -57,54 +55,6 @@ public class Menu {
 		CrearXML.CrearXML();
 	}
 	
-	private static Videojuego crearVideojuego(Scanner scanner) {
-		System.out.println("Creación de un nuevo Videojuego:");
-
-	    System.out.print("Título: ");
-	    String titulo = scanner.nextLine();
-
-	    System.out.print("Desarrollador: ");
-	    String desarrollador = scanner.nextLine();
-
-	    System.out.print("Director: ");
-	    String director = scanner.nextLine();
-
-	    System.out.print("Productor: ");
-	    String productor = scanner.nextLine();
-
-	    System.out.println("Género:");
-	    for (genero g : genero.values()) {
-	        System.out.println(g);
-	    }
-	    System.out.print("Elija un género: ");
-	    genero generoSeleccionado = genero.valueOf(scanner.nextLine());
-
-	    System.out.println("Subgénero:");
-	    for (subgenero sg : subgenero.values()) {
-	        System.out.println(sg);
-	    }
-	    System.out.print("Elija un subgénero: ");
-	    subgenero subgeneroSeleccionado = subgenero.valueOf(scanner.nextLine());
-
-	    System.out.print("PEGI: ");
-	    int pegi = scanner.nextInt();
-	    scanner.nextLine(); 
-
-	    System.out.print("Año de lanzamiento: ");
-	    int anno = scanner.nextInt();
-	    scanner.nextLine();
-
-	    System.out.print("Plataforma (separadas por comas): ");
-	    String plataforma = scanner.nextLine();
-
-	    int[] jugadores = new int[12];
-	    for (int i = 0; i < 12; i++) {
-	        System.out.print("Número de jugadores en el mes " + (i + 1) + ": ");
-	        jugadores[i] = scanner.nextInt();
-	    }
-
-	    
-    }
 
     private static void actualizarVideojuego(Scanner scanner, ArrayList<Videojuego> videojuegos) {
         
