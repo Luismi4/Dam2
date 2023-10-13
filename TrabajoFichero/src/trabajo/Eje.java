@@ -14,7 +14,7 @@ public class Eje {
 		Videojuego juego3 = new Videojuego("Sonic", "RockStar", "Director", "Productor", genero.accion,
 				subgenero.shooter, 18, 2010, "PS3", jugadores);
 		
-		EscribirXML.escribirXML(juego1);
+		ActualizarObjetoEnXML.escribirXML(juego1);
 		
 		LeerXML.LeerXML();
 		

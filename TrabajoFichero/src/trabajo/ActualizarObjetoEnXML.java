@@ -2,27 +2,21 @@ package trabajo;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
 import java.io.File;
-import java.io.IOException; 
 
-public class EscribirXML {
+
+public class ActualizarObjetoEnXML {
 	
 	private static int nodo;
 	private static boolean flag;
-	private static String titulo;
     private static Node idNode;
 	
     public static void escribirXML(Videojuego videojuegoAEscribir) {
@@ -40,7 +34,7 @@ public class EscribirXML {
 
             // Paso 2: Obtén el elemento raíz
             Element rootElement = doc.getDocumentElement();
-            int cantidadNodes = rootElement.getChildNodes().getLength();
+       
             
             while(!flag) {
             	
@@ -50,23 +44,19 @@ public class EscribirXML {
          // Obtener nodos para los atributos de Videojuego
             idNode = rootElement.getElementsByTagName("id").item(nodo); //annadir un id a los videojuegos para cambiar
             																		//el nombre
-            if ((idNode==null)&&(nodo==cantidadNodes)) {
-            	
-            	escribirDatos(videojuegoAEscribir, factory, builder, doc, rootElement, idNode);
-            	flag=true;
-            	
-            } else if (idNode==null) break;
             
-            else if ((idNode.toString().equals(String.valueOf(videojuegoAEscribir.getID())))||(nodo==cantidadNodes)) {
+            if (idNode!=null) {
+            if (idNode.toString().equals(String.valueOf(videojuegoAEscribir.getID()))) {
             	
             	escribirDatos(videojuegoAEscribir, factory, builder, doc, rootElement, idNode);
             	flag=true;
             
             }else
             nodo++;
-            }
+            } else 
+            	nodo++;
          
-        	
+            }
             
 
         } catch (Exception e) {
@@ -83,7 +73,7 @@ public class EscribirXML {
         Node directorNode = rootElement.getElementsByTagName("director").item(nodo);
         Node productorNode = rootElement.getElementsByTagName("productor").item(nodo);
         Node generoNode = rootElement.getElementsByTagName("genero").item(nodo);
-        Node subgeneroNode = rootElement.getElementsByTagName("subgenero").item(nodo);
+        Node subgeneroNode = generoNode.getFirstChild();
         Node pegiNode = rootElement.getElementsByTagName("pegi").item(nodo);
         Node annoNode = rootElement.getElementsByTagName("anno").item(nodo);
         Node plataformaNode = rootElement.getElementsByTagName("plataforma").item(nodo);
@@ -91,10 +81,48 @@ public class EscribirXML {
        
         
         
-        for (int i = 0; i < videojuegoAEscribir.getJugadores().length; i++) {
+        for (int i = 0; i < 12; i++) {
         
-         jugadoresNode.getChildNodes().item(i).setTextContent(Integer.toString(videojuegoAEscribir.getJugadores()[i])); //jugadores de cada mes
-         
+        	switch(i) {
+            case 0:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getEnero())));
+                break;
+            case 1:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getFebrero())));
+                break;
+            case 2:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getMarzo())));
+                break;
+            case 3:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getAbril())));
+                break;
+            case 4:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getMayo())));
+                break;
+            case 5:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getJunio())));
+                break;
+            case 6:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getJulio())));
+                break;
+            case 7:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getAgosto())));
+                break;
+            case 8:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getSeptiembre())));
+                break;
+            case 9:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getOctubre())));
+                break;
+            case 10:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getNoviembre())));
+                break;
+            case 11:
+            	jugadoresNode.getChildNodes().item(i).setTextContent(String.valueOf((videojuegoAEscribir.getJugadores().getDiciembre())));
+                break;
+            default:
+                System.out.println("Mes no válido");
+        	}
         }
         
         idNode.setTextContent(String.valueOf(videojuegoAEscribir.getID()));

@@ -1,6 +1,6 @@
 package trabajo;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Videojuego {
 
@@ -10,19 +10,19 @@ private String desarrollador;
 private String director;
 private String productor;
 private genero genero;
-private subgenero subgenero; //Es nodo nieto de genero
+private subgenero subgenero;
 private int pegi;
 private int anno;
 private static int contador;
 private String plataforma; //PS5, PS4, PS3, PS2, PS1, PC, xbox, xbox360, xboxOne, xboxOneX, Switch, 
 						//NES, SNES, N64, gameCube, wii, wiiU, megaDrive, saturn, dreamcast;
 						//El String debera quedar, por ejemplo: "PS5, xboxOneX, Switch, PC"
-private int[] jugadores = new int[12]; //un mes por casilla del array
+private Jugadores jugadores; //clase con sus propios atributos para después poder serializarlo en el xml de golpe
 
 //constructores
 
 public Videojuego(String titulo, String desarrollador, String director, String productor, trabajo.genero genero,
-		trabajo.subgenero subgenero, int pegi, int anno, String plataforma, int[] jugadores) {
+		trabajo.subgenero subgenero, int pegi, int anno, String plataforma, Jugadores jugadores) {
 	super();
 	this.ID = contador++;
 	this.titulo = titulo;
@@ -93,10 +93,10 @@ public String getPlataforma() {
 public void setPlataforma(String plataforma) {
 	this.plataforma = plataforma;
 }
-public int[] getJugadores() {
+public Jugadores getJugadores() {
 	return jugadores;
 }
-public void setJugadores(int[] jugadores) {
+public void setJugadores(Jugadores jugadores) {
 	this.jugadores = jugadores;
 }
 public int getID() {
@@ -105,14 +105,12 @@ public int getID() {
 
 //toString
 
-
-
 @Override
 public String toString() {
 	return "Videojuego [ID=" + ID + ", titulo=" + titulo + ", desarrollador=" + desarrollador + ", director=" + director
 			+ ", productor=" + productor + ", genero=" + genero + ", subgenero=" + subgenero + ", pegi=" + pegi
-			+ ", anno=" + anno + ", contador=" + contador + ", plataforma=" + plataforma + ", jugadores="
-			+ Arrays.toString(jugadores) + "]";
+			+ ", anno=" + anno + ", plataforma=" + plataforma + ", jugadores="
+			+ jugadores.toString() + "]";
 }
 
 }
@@ -141,6 +139,12 @@ enum subgenero{
 	carreras, tenis, futbol, baloncesto, golf; //para deportes
 
 }
+
+
+
+
+
+
 
 
 

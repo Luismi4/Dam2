@@ -103,8 +103,7 @@ public class Menu {
 	        jugadores[i] = scanner.nextInt();
 	    }
 
-	    return new Videojuego(titulo, desarrollador, director, productor, generoSeleccionado, subgeneroSeleccionado,
-	            pegi, anno, plataforma, jugadores);
+	    
     }
 
     private static void actualizarVideojuego(Scanner scanner, ArrayList<Videojuego> videojuegos) {
