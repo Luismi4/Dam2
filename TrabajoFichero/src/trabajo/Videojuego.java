@@ -7,8 +7,8 @@ private String titulo;
 private String desarrollador;
 private String director;
 private String productor;
-private genero genero;
-private subgenero subgenero;
+private Genero genero; //generos y subgeneros: https://en.wikipedia.org/wiki/List_of_video_game_genres
+private Subgenero subgenero;
 private int pegi;
 private int anno;
 private static int contador;
@@ -19,8 +19,8 @@ private Jugadores jugadores; //clase con sus propios atributos para después pod
 
 //constructores
 
-public Videojuego(String titulo, String desarrollador, String director, String productor, trabajo.genero genero,
-		trabajo.subgenero subgenero, int pegi, int anno, String plataforma, Jugadores jugadores) {
+public Videojuego(String titulo, String desarrollador, String director, String productor, Genero genero,
+		Subgenero subgenero, int pegi, int anno, String plataforma, Jugadores jugadores) {
 	super();
 	this.ID = contador++;
 	this.titulo = titulo;
@@ -33,6 +33,11 @@ public Videojuego(String titulo, String desarrollador, String director, String p
 	this.anno = anno;
 	this.plataforma = plataforma;
 	this.jugadores = jugadores;
+}
+
+public Videojuego() {
+	this.ID = -1;
+	
 }
 
 //getters y setters
@@ -61,16 +66,16 @@ public String getProductor() {
 public void setProductor(String productor) {
 	this.productor = productor;
 }
-public genero getGenero() {
+public Genero getGenero() {
 	return genero;
 }
-public void setGenero(genero genero) {
+public void setGenero(Genero genero) {
 	this.genero = genero;
 }
-public subgenero getSubgenero() {
+public Subgenero getSubgenero() {
 	return subgenero;
 }
-public void setSubgenero(subgenero subgenero) {
+public void setSubgenero(Subgenero subgenero) {
 	this.subgenero = subgenero;
 }
 public int getPegi() {
@@ -116,24 +121,10 @@ public String toString() {
 
 
 
-//enums
 
-//generos y subgeneros: https://en.wikipedia.org/wiki/List_of_video_game_genres
 
-enum genero{
 
-	accion, accionAventura, aventura, puzzle, rol, simulacion, estrategia, deportes;
 
-}
 
-enum subgenero{
 
-	plataformas, shooter, lucha, beatEmUp, sigilo, survival, ritmo, battleRoyale, //para accion
-	survivalHorror, metroidVania, //para accion-aventura
-	aventuraGrafica, visualNovel, //para aventura
-	actionRPG, JRPG, rolOccidental, MMORPG, roguelike, tacticalRPG, dungeonCrawler, //para rol
-	construccion, vida, vehiculos, //para simulacion
-	guerra, MOBA, realTimeStrategy, turnBasedStrategy, //para estrategia
-	carreras, tenis, futbol, baloncesto, golf; //para deportes
 
-}
