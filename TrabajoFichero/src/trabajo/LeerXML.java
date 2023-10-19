@@ -18,12 +18,11 @@ import trabajo.Subgenero;
 
 public class LeerXML {
 	
-	static ArrayList<Videojuego> arrayListVideojuegos = new ArrayList<Videojuego>();
-	
-
-    public static ArrayList<Videojuego> leerXML() {
+	public static ArrayList<Videojuego> leerXML() {
 
         try {
+        	
+        	ArrayList<Videojuego> arrayListVideojuegos = new ArrayList<Videojuego>();
 
             // Crear un objeto DocumentBuilderFactory
 
@@ -124,7 +123,8 @@ public class LeerXML {
             e.printStackTrace();
 
         }
-		return arrayListVideojuegos;
+		return null;
+		
 
     }
 
