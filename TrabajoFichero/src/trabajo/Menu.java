@@ -1,5 +1,6 @@
 package trabajo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,17 +11,19 @@ public class Menu {
 	
 	public static void Menu() {
 		
+		CompruebaXML();
 		
         while (true) {
+        	
+        	
             System.out.println("Videojuego Menu:");
-            
-            System.out.println("1. Leer XML (OBLIGATORIO)");
-            System.out.println("2. Añadir Videojuego");
-            System.out.println("3. Actualizar Videojuego");
-            System.out.println("4. Eliminar Videojuego");
-            System.out.println("5. Leer Videojuegos");
+            System.out.println("1. Añadir Videojuego");
+            System.out.println("2. Actualizar Videojuego");
+            System.out.println("3. Eliminar Videojuego");
+            System.out.println("4. Leer Videojuegos");
+            System.out.println("5. Resetear XML por defecto");
             System.out.println("6. Salir");
-            System.out.println("\n\n\n7. Crear XML (SOLO LA PRIMERA VEZ)");
+            
             System.out.print("Elija una opción: ");
 
             int choice = scanner.nextInt();
@@ -28,28 +31,27 @@ public class Menu {
 
             switch (choice) {
                 case 1:
-                    LeerXML.leerXML();
-                    break;
-                case 2:
                 	Videojuego nuevoVideojuego = crearVideojuego(scanner);
                     videojuegos.add(nuevoVideojuego);
                     System.out.println("Videojuego añadido.");
+                    CrearXML2.CrearXML2(videojuegos);
+                    break;
+                case 2:
+                	ActualizarObjetoEnXML.escribirXML((Metodos.editarVideojuego(videojuegos)));;
                 case 3:
-                    Metodos.editarVideojuego(videojuegos);
+                	eliminarVideojuego( videojuegos);
                     break;
                 case 4:
-                    eliminarVideojuego(scanner, videojuegos);
+                	LeerXML.leerXML();
                     break;
                 case 5:
-                	LeerXML();
+                	
+                	ResetearXML.ResetearXML(videojuegos);
+                	break;
                 case 6:
-                    System.out.println("Saliendo del programa.");
+                	System.out.println("Saliendo del programa.");
                     scanner.close();
                     System.exit(0);
-                    break;
-                case 7:
-                	CrearXML2.CrearXML2(videojuegos);
-                	LeerXML.leerXML();
                 	break;
                 default:
                     System.out.println("Opción no válida. Intente nuevamente.");
@@ -59,6 +61,24 @@ public class Menu {
 	}
 	
 	
+	private static void CompruebaXML() {
+	
+		String filePath = "coleccionvideojuegos.xml";
+
+        // Crea un objeto File con la ruta especificada
+        File file = new File(filePath);
+
+        // Verifica si el archivo o directorio existe
+        if (file.exists()) {
+            System.out.println("El archivo o directorio existe.");
+        } else {
+            System.out.println("El archivo o directorio no existe.");
+            System.out.println("Pulsa enter para crear");
+            scanner.next();
+            ResetearXML.ResetearXML(videojuegos);
+        }
+		
+	}
 	
 	private static Videojuego crearVideojuego(Scanner scanner) {
 		System.out.println("Creación de un nuevo Videojuego:");
@@ -116,7 +136,7 @@ public class Menu {
     	}
 
 
-    private static void eliminarVideojuego(Scanner scanner, ArrayList<Videojuego> videojuegos) {
+	public static void eliminarVideojuego(ArrayList<Videojuego> videojuegos) {
         
         System.out.print("Elija el id del Videojuego a eliminar: ");
         int index = scanner.nextInt();
@@ -134,6 +154,7 @@ public class Menu {
             		juego.setPlataforma("---");
             		Jugadores jugadores = new Jugadores(0,0,0,0,0,0,0,0,0,0,0,0);
             		juego.setJugadores(jugadores);
+            		ActualizarObjetoEnXML.escribirXML(juego);
             	}
             }
         } else {
@@ -141,8 +162,5 @@ public class Menu {
         }
     }
     
-    private static void LeerXML() {
-    	
-    }
-    
+       
 }

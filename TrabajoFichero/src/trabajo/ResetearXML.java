@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class ResetearXML {
 
-	public static ArrayList<Videojuego> videojuegos = new ArrayList<>();
+
 	
-	public static void ResetearXML() {
+	public static void ResetearXML(ArrayList<Videojuego> videojuegos) {
 		
-	
+		videojuegos.clear();
 	
 		Jugadores jugadores = new Jugadores (10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
 	
@@ -44,16 +44,19 @@ public class ResetearXML {
     
 		
 		
-	
-	
+      
+        videojuegos.add(juego1);
+        videojuegos.add(juego2);
+        videojuegos.add(juego3);
+        videojuegos.add(juego4);
+        videojuegos.add(juego5);
+        videojuegos.add(juego6);
+        videojuegos.add(juego7);
+        videojuegos.add(juego8);
+        videojuegos.add(juego9);
+        videojuegos.add(juego10);
 		
-
-		
-		ArrayList<Videojuego> ArrayListVideojuegos = LeerXML.leerXML();
-		
-		for (Videojuego juego : ArrayListVideojuegos) {
-			System.out.println(juego.toString());
-		}
+		CrearXML2.CrearXML2(videojuegos);
 		
 		//Metodos.NumJugadores(ArrayListVideojuegos);
 		//ActualizarObjetoEnXML.escribirXML(Metodos.editarVideojuego(ArrayListVideojuegos));

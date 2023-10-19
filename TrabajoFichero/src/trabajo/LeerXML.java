@@ -114,6 +114,8 @@ public class LeerXML {
             	arrayListVideojuegos.add(videojuegoObjeto);
             	
             }
+            
+            for (Videojuego juego : arrayListVideojuegos) System.out.println(juego.toString());
 
             return arrayListVideojuegos;
             
