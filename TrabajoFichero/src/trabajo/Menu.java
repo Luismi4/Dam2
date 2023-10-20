@@ -80,7 +80,6 @@ public class Menu {
         } else {
             System.out.println("El archivo o directorio no existe.");
             System.out.println("Pulsa enter para crear un XML con valores por defecto.");
-            String enter = scanner.nextLine();
             ArrayList<Videojuego> videojuegos = new ArrayList<Videojuego>();
             ResetearXML.ResetearXML2(videojuegos);
             return videojuegos;

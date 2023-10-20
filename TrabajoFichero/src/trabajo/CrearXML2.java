@@ -27,8 +27,12 @@ public class CrearXML2 {
             
             for (Videojuego juego : videojuegosLista) {
             	
-            	addVideojuego(document, videojuegos, String.valueOf(juego.getID()), juego.getTitulo(), juego.getDesarrollador(), juego.getDirector(), juego.getProductor(), String.valueOf(juego.getGenero()), String.valueOf(juego.getSubgenero()), String.valueOf(juego.getPegi()), String.valueOf(juego.getAnno()), juego.getPlataforma(), String.valueOf(juego.getJugadores().getEnero()), String.valueOf(juego.getJugadores().getFebrero()), String.valueOf(juego.getJugadores().getMarzo()), String.valueOf(juego.getJugadores().getAbril()), String.valueOf(juego.getJugadores().getMayo()), String.valueOf(juego.getJugadores().getJunio()), String.valueOf(juego.getJugadores().getJulio()), String.valueOf(juego.getJugadores().getAgosto()), String.valueOf(juego.getJugadores().getSeptiembre()), String.valueOf(juego.getJugadores().getOctubre()), String.valueOf(juego.getJugadores().getNoviembre()), String.valueOf(juego.getJugadores().getDiciembre()));
-            	
+            	addVideojuego(document, videojuegos, String.valueOf(juego.getID()), juego.getTitulo(), juego.getDesarrollador(), juego.getDirector(), juego.getProductor(), String.valueOf(juego.getGenero()), 
+            			String.valueOf(juego.getSubgenero()), String.valueOf(juego.getPegi()), String.valueOf(juego.getAnno()), juego.getPlataforma(), 
+            			String.valueOf(juego.getJugadores().getEnero()), String.valueOf(juego.getJugadores().getFebrero()), String.valueOf(juego.getJugadores().getMarzo()), 
+            			String.valueOf(juego.getJugadores().getAbril()), String.valueOf(juego.getJugadores().getMayo()), String.valueOf(juego.getJugadores().getJunio()), 
+            			String.valueOf(juego.getJugadores().getJulio()), String.valueOf(juego.getJugadores().getAgosto()), String.valueOf(juego.getJugadores().getSeptiembre()), 
+            			String.valueOf(juego.getJugadores().getOctubre()), String.valueOf(juego.getJugadores().getNoviembre()), String.valueOf(juego.getJugadores().getDiciembre()));
             	
             }
             
@@ -44,7 +48,10 @@ public class CrearXML2 {
         }
     }
 
-    private static void addVideojuego(Document document, Element parentElement, String id, String titulo, String desarrollador, String director, String productor, String genero, String subgenero, String pegi, String anno, String plataforma, String... jugadores) {
+    private static void addVideojuego(Document document, Element parentElement, String id, String titulo, 
+    		String desarrollador, String director, String productor, String genero, String subgenero, String pegi, 
+    		String anno, String plataforma, String... jugadores) {
+    	
         Element videojuego = document.createElement("videojuego");
         parentElement.appendChild(videojuego);
 
@@ -66,6 +73,7 @@ public class CrearXML2 {
         for (int i = 0; i < meses.length; i++) {
             jugadoresElement.appendChild(createElement(document, meses[i], jugadores[i]));
         }
+        
     }
 
     private static Element createElement(Document document, String elementName, String textContent) {

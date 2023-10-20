@@ -70,16 +70,6 @@ public class ResetearXML {
 		
 		CrearXML2.CrearXML2(videojuegos);
 		
-		//Metodos.NumJugadores(ArrayListVideojuegos);
-		//ActualizarObjetoEnXML.escribirXML(Metodos.editarVideojuego(ArrayListVideojuegos));
-		
-		//for (Videojuego juego : ArrayListVideojuegos) {
-		//	System.out.println(juego.toString());
-		//}
-		
-		//CrearXML.CrearXML();
-		
-
 	}
 
 }
