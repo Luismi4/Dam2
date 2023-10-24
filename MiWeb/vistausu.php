@@ -19,17 +19,17 @@
         $contraseña = "";
         $base_de_datos = "MiWeb";
 
-        $conexion = new mysqli("localhost", "usuario", "contraseña", "basededatos");
+        $conexion = new mysqli($servidor, $usuario, $contraseña, $base_de_datos);
         $consulta = "SELECT * FROM persona";
         $resultado = $conexion->query($consulta);
 
         while ($fila = $resultado->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $fila["id"] . "</td>";
-            echo "<td>" . $fila["nombre"] . "</td>";
-            echo "<td>" . $fila["email"] . "</td>";
-            echo "<td>" . $fila["edad"] . "</td>";
-            echo '<td><a href="editar_usuario.php?id=' . $fila["id"] . '">Editar</a></td>';
+            echo "<td>" . $fila["ID"] . "</td>";
+            echo "<td>" . $fila["Nombre"] . "</td>";
+            echo "<td>" . $fila["Email"] . "</td>";
+            echo "<td>" . $fila["Edad"] . "</td>";
+            echo '<td><a href="editar_usuario.php?ID=' . $fila["ID"] . '">Editar</a></td>';
             echo "</tr>";
         }
 
