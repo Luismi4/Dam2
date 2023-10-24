@@ -28,11 +28,9 @@ public class Eje {
         System.out.println("Introduce el texto a cifrar:");
         String textoOriginal = scanner.nextLine();
 
-        // Cifrar el texto original
         String textoCifrado = cifrarSimetrico(claveSecreta, textoOriginal);
         System.out.println("Texto cifrado: " + textoCifrado);
 
-        // Descifrar el texto cifrado
         String textoDescifrado = descifrarSimetrico(claveSecreta, textoCifrado);
         System.out.println("Texto descifrado: " + textoDescifrado);
 

@@ -20,7 +20,7 @@ public class Eje {
             System.out.println("3. Regenerar las claves pública y privada");
             System.out.println("4. Salir");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -53,7 +53,7 @@ public class Eje {
     public static void generarKeysAsimetrica() {
         try {
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-            keyPairGenerator.initialize(2048); // Usar RSA con una clave de 2048 bits
+            keyPairGenerator.initialize(2048); 
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
             publicKey = keyPair.getPublic();
             privateKey = keyPair.getPrivate();
