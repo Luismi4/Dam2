@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inserta usuario</title>
+</head>
+<body>
+    <h2>Inserta usuario</h2>
 <?php
 $servidor = "localhost";
 $usuario = "root";
@@ -26,3 +33,6 @@ if($conexion->query($consulta) === true){
 
 $conexion->close();
 ?>
+<a href="index.html"><button>Volver a la Página Principal</button></a>
+</body>
+</html>

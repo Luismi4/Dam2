@@ -36,5 +36,6 @@
         $conexion->close();
         ?>
     </table>
+    <a href="index.html"><button>Volver a la Página Principal</button></a>
 </body>
 </html>

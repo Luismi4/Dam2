@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualiza Usuario</title>
+</head>
+<body>
+    <h2>Actualiza Usuario</h2>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["id"];
@@ -21,5 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $conexion->close();
+    
 }
 ?>
+<a href="index.html"><button>Volver a la Página Principal</button></a>
+</body>
+</html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editar Usuario</title>
+    <title>Edita Usuario</title>
 </head>
 <body>
-    <h2>Editar Usuario</h2>
+    <h2>Edita Usuario</h2>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["ID"])) {
         
@@ -41,7 +41,8 @@
             echo '</form>';
         
     }
-
+    $conexion->close();
         ?>
+        <a href="index.html"><button>Volver a la Página Principal</button></a>
 </body>
 </html>
