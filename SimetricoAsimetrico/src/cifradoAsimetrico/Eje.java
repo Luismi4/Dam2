@@ -12,8 +12,9 @@ public class Eje {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        while (true) {
+        boolean salir = false;
+        
+        while (!salir) {
             System.out.println("Seleccione una opción:");
             System.out.println("1. Cifrar un mensaje");
             System.out.println("2. Descifrar un mensaje cifrado");
