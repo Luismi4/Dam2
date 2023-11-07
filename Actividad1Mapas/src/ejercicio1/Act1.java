@@ -9,11 +9,9 @@ import java.util.Map;
 
 public class Act1 {
 
-	 
-
-	public static void main(String[] args) {
-		Map<String, Double> notas;
-		notas = new HashMap<>();
+    public static void main(String[] args) {
+        Map<String, Double> notas;
+        notas = new HashMap<>();
 
         JFrame frame = new JFrame("Gestión de Notas");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,12 +43,16 @@ public class Act1 {
         agregarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre = nombreField.getText();
-                double nota = Double.parseDouble(notaField.getText());
-                notas.put(nombre, nota);
-                JOptionPane.showMessageDialog(frame, "Nota agregada con éxito.");
-                nombreField.setText("");
-                notaField.setText("");
+                try {
+                    String nombre = nombreField.getText();
+                    double nota = Double.parseDouble(notaField.getText());
+                    notas.put(nombre, nota);
+                    JOptionPane.showMessageDialog(frame, "Nota agregada con éxito.");
+                    nombreField.setText("");
+                    notaField.setText("");
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Error: Ingrese una nota válida.");
+                }
             }
         });
 
@@ -68,35 +70,42 @@ public class Act1 {
         corregirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre = nombreField.getText();
-                double nota = Double.parseDouble(notaField.getText());
-                if (notas.containsKey(nombre)) {
-                    notas.put(nombre, nota);
-                    JOptionPane.showMessageDialog(frame, "Nota corregida con éxito.");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "El estudiante no existe en la lista de notas.");
+                try {
+                    String nombre = nombreField.getText();
+                    double nota = Double.parseDouble(notaField.getText());
+                    if (notas.containsKey(nombre)) {
+                        notas.put(nombre, nota);
+                        JOptionPane.showMessageDialog(frame, "Nota corregida con éxito.");
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "El estudiante no existe en la lista de notas.");
+                    }
+                    nombreField.setText("");
+                    notaField.setText("");
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Error: Ingrese una nota válida.");
                 }
-                nombreField.setText("");
-                notaField.setText("");
             }
         });
 
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre = nombreField.getText();
-                if (notas.containsKey(nombre)) {
-                    notas.remove(nombre);
-                    JOptionPane.showMessageDialog(frame, "Nota eliminada con éxito.");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "El estudiante no existe en la lista de notas.");
+                try {
+                    String nombre = nombreField.getText();
+                    if (notas.containsKey(nombre)) {
+                        notas.remove(nombre);
+                        JOptionPane.showMessageDialog(frame, "Nota eliminada con éxito.");
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "El estudiante no existe en la lista de notas.");
+                    }
+                    nombreField.setText("");
+                    notaField.setText("");
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Error: Ingrese una nota válida.");
                 }
-                nombreField.setText("");
-                notaField.setText("");
             }
         });
 
         frame.setVisible(true);
     }
-
 }
