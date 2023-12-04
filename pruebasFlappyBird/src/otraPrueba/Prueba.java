@@ -1,8 +1,7 @@
 package otraPrueba;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -11,16 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-
 class Bird {
-    public int x;
-    public int y;
-    public int velocity;
-    public static final int BIRD_SIZE = 30;
+    private int x;
+    private int y;
+    private int velocity;
+    static final int BIRD_SIZE = 30;
 
     public Bird() {
         x = 100;
@@ -49,25 +43,17 @@ class Bird {
     public int getY() {
         return y;
     }
-
-	public int getX() {
-		// TODO Auto-generated method stub
-		return x;
-	}
 }
 
 class Column {
-    public int x;
-    public int height;
-    public boolean scored;
-    public static final int WIDTH = 50;
-    public static final int COLUMN_GAP = 150;
-    public static final int GAP_SIZE = 150;
+    int x;
+    private int height;
+    static final int WIDTH = 50;
+    private static final int COLUMN_GAP = 150;
 
     public Column(int x, int height) {
         this.x = x;
         this.height = height;
-        this.scored = false;
     }
 
     public void move() {
@@ -85,33 +71,11 @@ class Column {
         g.fillRect(x, 0, WIDTH, height);
         g.fillRect(x, height + COLUMN_GAP, WIDTH, 400);
     }
-    
-    public int getX() {
-        return x;
-    }
-    
-    public boolean isScored() {
-        return scored;
-    }
-
-    public void setScored(boolean scored) {
-        this.scored = scored;
-    }
-
-	public int getWidth() {
-		// TODO Auto-generated method stub
-		return WIDTH;
-	}
-    
 }
 
 public class Prueba extends JFrame {
-    public Bird bird;
-    public List<Column> columns;
-    private static final int GROUND_HEIGHT = 600;
-    public int score = 0;
-    
-
+    private Bird bird;
+    private List<Column> columns;
 
     public Prueba() {
         setTitle("Flappy Bird");
@@ -155,40 +119,23 @@ public class Prueba extends JFrame {
         generateColumns();
         moveColumns();
         checkCollisions();
-        checkScore();
-    }
-    
-    private void checkScore() {
-        for (Column column : columns) {
-            if (!column.isScored() && column.getX() + column.getWidth() < bird.getX()) {
-                // El pájaro ha pasado la columna
-                score++;
-                column.setScored(true);
-                System.out.println("Score: " + score); // Puedes mostrar la puntuación en la consola o en otro lugar
-            }
-        }
     }
 
     private void generateColumns() {
-        if (columns.isEmpty() || columns.get(columns.size() - 1).getX() < WIDTH - 300) {
-            int gapStart = new Random().nextInt(GROUND_HEIGHT - Column.GAP_SIZE);
-            columns.add(new Column(WIDTH, HEIGHT));
-        }
-
-        // Reiniciar el estado de puntuación al generar nuevas columnas
-        for (Column column : columns) {
-            column.setScored(false);
+        if (columns.isEmpty() || columns.get(columns.size() - 1).x < getWidth() - 300) {
+            int columnHeight = new Random().nextInt(getHeight() - 200) + 50;
+            columns.add(new Column(getWidth(), columnHeight));
         }
     }
 
-    public void moveColumns() {
+    private void moveColumns() {
         for (Column column : columns) {
             column.move();
         }
         columns.removeIf(column -> column.x + column.WIDTH < 0);
     }
 
-    public void checkCollisions() {
+    private void checkCollisions() {
         for (Column column : columns) {
             if (column.collidesWith(bird)) {
                 gameOver();
@@ -201,7 +148,7 @@ public class Prueba extends JFrame {
         }
     }
 
-    public void gameOver() {
+    private void gameOver() {
         JOptionPane.showMessageDialog(this, "Game Over!");
         bird = new Bird();
         columns.clear();
@@ -226,5 +173,6 @@ public class Prueba extends JFrame {
         });
     }
 }
+
 
 
